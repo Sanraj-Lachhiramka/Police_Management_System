@@ -20,7 +20,7 @@ def create_tables():
 
 #add
 def add_data_officer(Id, FirstName, LastName, Ranking, Department, Phone, Address, BloodGrp):
-    c.execute('INSERT INTO OFFICER(Id, FirstName, LastName, Ranking, Department, Phone, Address, BloodGrp) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)', (Id, FirstName, LastName, Ranking, Department, Phone, Address, BloodGrp))
+    c.execute('INSERT INTO OFFICER(OfficerId, FirstName, LastName, Ranking, Department, Phone, Address, BloodGrp) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)', (Id, FirstName, LastName, Ranking, Department, Phone, Address, BloodGrp))
     mydb.commit()
 
 def add_data_cases(CaseId, Name, DOC, TOC, Location, CRIME, OfficerId):
@@ -50,7 +50,7 @@ def view_data_officer():
     data = c.fetchall()
     return data
 
-def view_data_case():
+def view_data_cases():
     c.execute('SELECT * FROM CASES')
     data = c.fetchall()
     return data
@@ -60,7 +60,7 @@ def view_data_complaint():
     data = c.fetchall()
     return data
 
-def view_data_complaninant():
+def view_data_complainant():
     c.execute('SELECT * FROM COMPALINANT')
     data = c.fetchall()
     return data
