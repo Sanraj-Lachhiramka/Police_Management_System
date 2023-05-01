@@ -5,14 +5,78 @@ import datetime
 
 
 def create():
-    st.subheader("Add")
-    Train_No = st.text_input("Train_No", key="train_no_create")
-    Name = st.text_input("Name", key="train_name_create")
-    Train_type = st.text_input("Train_type", key="train_type_create")
-    Source = st.text_input("Source", key="source_create")
-    Destination = st.text_input("Destination", key="destination_create")
-    Availability = st.text_input("Availability", key="availability_create")
+    with st.expander("Add Data to Officer table"):
+        Id = st.text_input("OfficerId", key="OfficerId_create")
+        FirstName = st.text_input("First Name", key="FirstName_create")
+        LastName = st.text_input("Last Name", key="LastName_create")
+        Ranking = st.text_input("Ranking", key="Ranking_create")
+        Department = st.text_input("Department", key="Department_create")
+        Phone = st.text_input("Phone", key="Phone_create")
+        Address = st.text_input("Address", key="Address_create")
+        BloodGrp = st.text_input("BloodGrp", key="BloodGrp_create")
 
-    if st.button("Add Train"):
-        add_data(Train_No, Name, Train_type, Source, Destination, Availability)
-        st.success("Train added successfully")
+        if st.button("Add Officer"):
+            add_data_officer(Id, FirstName, LastName, Ranking, Department, Phone, Address, BloodGrp)
+            st.success("Officer added successfully")
+            
+    with st.expander("Add Data to Cases table"):
+        CaseId = st.text_input("CaseId", key="CaseId_create")
+        Name = st.text_input("Name", key="Name_create")
+        DOC = st.date_input("DOC", key="DOC_create")
+        TOC = st.time_input("TOC", key="TOC_create")
+        Location = st.text_input("Location", key="Location_create")
+        CRIME = st.text_input("CRIME", key="CRIME_create")
+        OfficerId = st.text_input("OfficerId", key="OfficerId_create")
+
+        if st.button("Add Cases"):
+            add_data_cases(CaseId, Name, DOC, TOC, Location, CRIME, OfficerId)
+            st.success("Case added successfully")
+            
+    with st.expander("Add Data to Complaint table"):
+        ComplaintId = st.text_input("ComplaintId", key="ComplaintId_create")
+        Type = st.text_input("Type", key="Type_create")
+        Complainant = st.text_input("Complainant", key="Complainant_create")
+        DOC = st.date_input("DOC", key="DOC_create")
+        Solved = st.text_input("Solved", key="Solved_create")
+        CaseId = st.text_input("CaseId", key="CaseId_create")
+        OfficerId = st.text_input("OfficerId", key="OfficerId_create")
+
+        if st.button("Add Complaints"):
+            add_data_complaint(ComplaintId, Type, Complainant, DOC, Solved, CaseId, OfficerId)
+            st.success("Complaint added successfully")
+
+
+    with st.expander("Add Data to Complainant table"):
+        ComplainantId = st.text_input("ComplainantId", key="ComplainantId_create")
+        Name = st.text_input("Name", key="Name_create")
+        Phone = st.text_input("Phone", key="Phone_create")
+        Address = st.text_input("Address", key="Address_create")
+        ComplaintId = st.text_input("ComplaintId", key="ComplaintId_create")
+        RelationToVictim = st.text_input("RelationToVictim", key="RelationToVictim_create")
+
+        if st.button("Add Complainant"):
+            add_data_complainant(ComplainantId, Name, Phone, Address, ComplaintId, RelationToVictim)
+            st.success("Complainant added successfully")
+
+
+    with st.expander("Add Data to Arrest table"):
+        ArrestId = st.text_input("ArrestId", key="ArrestId_create")
+        DOC = st.data_input("DOC", key="DOC_create")
+        Location = st.text_input("Location", key="Location_create")
+        OfficerId = st.text_input("OfficerId", key="OfficerId_create")
+        CriminalId = st.text_input("CriminalId", key="CriminalId_create")
+
+        if st.button("Add Arrest"):
+            add_data_arrest(ArrestId, DOC, Location, CellNo, OfficerId, CriminalId)
+            st.success("Arrest added successfully")
+
+
+    with st.expander("Add Data to Criminal table"):
+        CriminalId = st.text_input("CriminalId", key="CriminalId_create")
+        Name = st.text_input("Name", key="Name_create")
+        JailTerm = st.text_input("JailTerm", key="JailTerm_create")
+        CaseId = st.text_input("OfficerId", key="CaseId_create")
+
+        if st.button("Add Criminal"):
+            add_data_criminal(CriminalId, Name, JailTerm, CaseId)
+            st.success("Criminal added successfully")
