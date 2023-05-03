@@ -4,8 +4,8 @@ import datetime
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="password",
-    database="Police_Management_System1"
+    password="205061",
+    database="Police_Management_System"
 )
 c = mydb.cursor()
 
@@ -17,7 +17,7 @@ def create_tables():
               'CREATE TABLE IF NOT EXISTS CRIMINAL(CriminalId VARCHAR(20) NOT NULL, Name TEXT, JailTerm TEXT, CaseId VARCHAR(20),PRIMARY KEY(CriminalId), FOREIGN KEY(CaseId) REFERENCES CASES(CaseId))'
               'CREATE TABLE IF NOT EXISTS ARREST(ArrestId VARCHAR(20) NOT NULL, DOC DATE, Location TEXT, CellNo TEXT, OfficerId VARCHAR(20), CriminalId VARCHAR(20), PRIMARY KEY(ArrestId), FOREIGN KEY(OfficerId) REFERENCES OFFICER(OfficerId), FOREIGN KEY(CriminalId) REFERENCES CRIMINAL(CriminalId))')
 
-
+create_tables()
 #add
 def add_data_officer(Id, FirstName, LastName, Ranking, Department, Phone, Address, BloodGrp):
     c.execute('INSERT INTO OFFICER(OfficerId, FirstName, LastName, Ranking, Department, Phone, Address, BloodGrp) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)', (Id, FirstName, LastName, Ranking, Department, Phone, Address, BloodGrp))
