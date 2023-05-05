@@ -4,8 +4,10 @@ import datetime
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="205061",
-    database="Police_Management_System"
+    password="password",
+    database="police"
+#     password="205061",
+#     database="Police_Management_System"
 )
 c = mydb.cursor()
 
@@ -75,5 +77,13 @@ def view_data_criminal():
     data = c.fetchall()
     return data
 
+def view_only_CaseID():
+    c.execute('SELECT CaseID FROM CASES')
+    data = c.fetchall()
+    return data
+
 #update
 #delete
+def delete_data(selected_case):
+    c.execute('DELETE FROM CASES WHERE CaseId={}'.format(selected_case))
+    mydb.commit()
