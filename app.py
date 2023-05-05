@@ -7,9 +7,9 @@ import datetime
 
 from create import create
 from database import create_tables
-# from delete import delete
-# from read import read
-# from update import update
+from delete import delete
+from read import read
+from update import update
 
 # mydb = mysql.connector.connect(
 #     host="localhost",
