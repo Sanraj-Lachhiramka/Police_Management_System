@@ -6,6 +6,8 @@ mydb = mysql.connector.connect(
     user="root",
     password="password",
     database="police"
+    # password = "205061",
+    # database = "Police_Management_System"
 )
 c = mydb.cursor()
 
