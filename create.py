@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 from database import add_data_officer, add_data_cases, add_data_complaint, add_data_complainant, \
     add_data_arrest, add_data_criminal
 import datetime

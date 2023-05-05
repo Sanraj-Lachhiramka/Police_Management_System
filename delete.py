@@ -1,17 +1,17 @@
 import pandas as pd
 import streamlit as st
 import datetime
-from database import delete_data
-from database import view_data_cases,view_only_CaseID
+import pandas as pd
+from database import delete_data, view_data_cases,view_only_CaseID
 
 def delete():
     result=view_data_cases()
     df = pd.DataFrame(result, columns=['CaseId', 'Name' , 'DOC', 'TOC' , 'Location', 'CRIME' , 'OfficerId' ])
     with st.expander("Current data"):
         st.dataframe(df)
-    list_of_cases = [i[0] for i in view_only_CaseID ()] 
+    list_of_cases = [i[0] for i in view_only_CaseID ()]
     selected_case= st.selectbox("Task to Delete", list_of_cases)
-    st.warning("Do you want to delete ::{}".format(selected_case)) 
+    st.warning("Do you want to delete ::{}".format(selected_case))
     if st.button("Delete Case"):
         delete_data(selected_case)
         st.success("Case has been solved successfully")

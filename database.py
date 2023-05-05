@@ -1,5 +1,6 @@
 import mysql.connector
 import datetime
+import pandas as pd
 
 mydb = mysql.connector.connect(
     host="localhost",
@@ -75,13 +76,24 @@ def view_data_criminal():
     data = c.fetchall()
     return data
 
+#update
+#officer details
+def get_officer(OfficerId):
+    c.execute('SELECT * FROM OFFICER WHERE OfficerID="{}"'.format(OfficerId))
+    data = c.fetchall()
+    return data
+
+def edit_officer_data(new_ranking, new_department, new_phone, new_address,OfficerId):
+    c.execute("UPDATE Officer SET Ranking=%s, Department=%s, Phone=%s, Address=%s WHERE OfficerId=%s  ", (new_ranking, new_department, new_phone, new_address,OfficerId))
+    mydb.commit()
+
+#delete
+#case
 def view_only_CaseID():
     c.execute('SELECT CaseID FROM CASES')
     data = c.fetchall()
     return data
 
-#update
-#delete
 def delete_data(selected_case):
     c.execute('DELETE FROM CASES WHERE CaseId={}'.format(selected_case))
     mydb.commit()
