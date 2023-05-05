@@ -14,4 +14,4 @@ def delete():
     st.warning("Do you want to delete ::{}".format(selected_case)) 
     if st.button("Delete Case"):
         delete_data(selected_case)
-    st.success("Case has been solved successfully")
+        st.success("Case has been solved successfully")
